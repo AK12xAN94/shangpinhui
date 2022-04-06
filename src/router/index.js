@@ -8,23 +8,23 @@ import Login from '@/views/Login'
 import Search from '@/views/Search'
 import Register from '@/views/Register'
 
-const originPush = VueRouter.prototype.push
-VueRouter.prototype.push = function (location, resolve, reject) {
-    if (resolve && reject) {
-        originPush.call(this, location, resolve, reject)
-    } else {
-        originPush.call(this, () => { }, () => { })
-    }
-}
+// const originPush = VueRouter.prototype.push
+// VueRouter.prototype.push = function (location, resolve, reject) {
+//     if (resolve && reject) {
+//         originPush.call(this, location, resolve, reject)
+//     } else {
+//         originPush.call(this, () => { }, () => { })
+//     }
+// }
 
-const originReplace = VueRouter.prototype.replace
-VueRouter.prototype.replace = function (location, resolve, reject) {
-    if (resolve && reject) {
-        originReplace.call(this, location, resolve, reject)
-    } else {
-        originReplace.call(this, () => { }, () => { })
-    }
-}
+// const originReplace = VueRouter.prototype.replace
+// VueRouter.prototype.replace = function (location, resolve, reject) {
+//     if (resolve && reject) {
+//         originReplace.call(this, location, resolve, reject)
+//     } else {
+//         originReplace.call(this, () => { }, () => { })
+//     }
+// }
 
 const router = new VueRouter({
     routes: [
