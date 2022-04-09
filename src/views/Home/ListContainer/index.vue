@@ -4,28 +4,7 @@
     <div class="sortList clearfix">
       <div class="center">
         <!--banner轮播-->
-        <div class="swiper-container" id="mySwiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img src="@/assets/home/banner1.jpg" />
-            </div>
-            <!-- <div class="swiper-slide">
-              <img src="@/assets/home/banner2.jpg" />
-            </div>
-            <div class="swiper-slide">
-              <img src="@/assets/home/banner3.jpg" />
-            </div>
-            <div class="swiper-slide">
-              <img src="@/assets/home/banner4.jpg" />
-            </div> -->
-          </div>
-          <!-- 如果需要分页器 -->
-          <div class="swiper-pagination"></div>
-
-          <!-- 如果需要导航按钮 -->
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div>
+        <swiper-component :initData="bannerList"></swiper-component>
       </div>
       <div class="right">
         <div class="news">
@@ -101,7 +80,20 @@
 </template>
 
 <script>
-export default {};
+import { mapState } from "vuex";
+
+import SwiperComponent from "@/components/Home/SwiperComponent.vue";
+export default {
+  components: { SwiperComponent },
+  created() {
+    this.$store.dispatch("getBannerList");
+  },
+  computed: {
+    ...mapState({
+      bannerList: (state) => state.home.bannerList,
+    }),
+  },
+};
 </script>
 
 <style lang="less" scoped>
@@ -175,7 +167,7 @@ export default {};
           width: 25%;
 
           .list-item {
-            background-image: url('@/assets/home/icons.png');
+            background-image: url("@/assets/home/icons.png");
             width: 61px;
             height: 40px;
             display: block;
